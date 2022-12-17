@@ -1,5 +1,7 @@
 const { Schema, model } = require("mongoose");
 
+const { mongooseError } = require("../helpers");
+
 const contactSchema = new Schema({
   name: {
     type: String,
@@ -7,6 +9,7 @@ const contactSchema = new Schema({
   },
   email: {
     type: String,
+    unique: true,
   },
   phone: {
     type: String,
@@ -17,5 +20,8 @@ const contactSchema = new Schema({
   },
 });
 
+contactSchema.post("save", mongooseError);
+
 const Contact = model("contact", contactSchema);
+
 module.exports = Contact;

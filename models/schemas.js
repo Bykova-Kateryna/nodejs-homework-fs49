@@ -1,4 +1,4 @@
-const Joi = require("joi");
+const Joi = require("Joi");
 
 const validContactExemple = Joi.object({
   name: Joi.string().required(),
@@ -11,7 +11,9 @@ const validContactExempleForStatus = Joi.object({
   favorite: Joi.boolean().required(),
 });
 
-module.exports = {
+const schemas = {
   validContactExemple,
   validContactExempleForStatus,
 };
+
+module.exports = schemas;
